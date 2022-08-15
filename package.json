@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "django": "^1.0.0",
+    "pandas": "^0.0.3",
+    "react-redux": "^8.0.2",
+    "scikit-learn": "^0.1.0"
+  }
+}

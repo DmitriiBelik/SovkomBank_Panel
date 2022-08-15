@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Главная страница</title>
+</head>
+<body>
+    <form name="form", method="POST", style="text-align: center;">
+        {% csrf_token %}
+        <br>
+        Height: <input type="number" name="height", placeholder="Enter height in cm" required/>
+        <br><br>
+        Weight: <input type="number" name="weight", placeholder="Enter weight in kg" required/>
+        <br><br>
+        <button>Run</button>
+    </form>
+    <p style="text-align: center;">{{ output }}</p>
+</body>
+</html>
