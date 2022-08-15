@@ -1,6 +1,6 @@
 import Plot from 'react-plotly.js'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Skeleton from '@mui/material/Skeleton'
 import {  useSelector } from 'react-redux';
 
@@ -15,12 +15,13 @@ const Graph = ({graphNumber}) => {
           closed = [],
           declined = [],
           opened = [];  
-    const fetch = () => {
+    const fetch =() => {
         axios.get(`http://localhost:3000/${activeCategorie}/`)
             .then(res => {
                 setItems(res.data[graphNumber]);
                 setLoaded(true);
                 setError(false);
+                console.log('render')
             },
             (error) => {
                 setLoaded(true);
@@ -57,7 +58,7 @@ const Graph = ({graphNumber}) => {
 
     useEffect(() => {
         fetch();
-    },[isLoaded, fetch])
+    },[isLoaded, activeCategorie])
 
     if(error){
         return (

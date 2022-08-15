@@ -15,7 +15,6 @@ const Selector = ({categories}) => {
 
     useEffect (() => {
         dispatch(activeCategorieChanged(activeCategorie))
-        console.log(activeCategorie)
     },[])
 
     return(
