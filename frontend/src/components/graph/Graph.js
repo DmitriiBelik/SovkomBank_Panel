@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Skeleton from '@mui/material/Skeleton'
 
-const Graph = () => {
+const Graph = ({graphLine,graphNumber}) => {
 
     const [items, setItems] = useState({});
     const [isLoaded, setLoaded] = useState(false);
@@ -15,9 +15,9 @@ const Graph = () => {
           declined = [],
           opened = [];  
     const fetch = () => {
-        axios.get('http://localhost:3000/casco')
+        axios.get(`http://localhost:3000/${graphLine}/`)
             .then(res => {
-                setItems(res.data);
+                setItems(res.data[graphNumber]);
                 setLoaded(true);
                 setError(false);
             },
@@ -125,7 +125,7 @@ const Graph = () => {
                     }
                 }
                 ]}
-                layout={ {width: "40%", height: 400, title: 'График',barmode: 'stack', font:{family:"'Rubik', sans-serif;"}} }
+                layout={ {width: "40%", height: 400, title: `${graphLine}: ${graphNumber}`,barmode: 'stack', font:{family:"'Rubik', sans-serif;"}} }
             />
         )
     }
