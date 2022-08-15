@@ -2,9 +2,13 @@ import Graph from "../graph/Graph"
 import Selector from "../selector/Selector"
 import './GraphList.css'
 const GraphList = () => {
+    const categories = [
+        'Каско',
+        'Осаго'
+    ]
     return(
         <>
-            <Selector/>
+            <Selector categories= {categories}/>
             <div className="Graph_Wrapper">
                 <Graph/>
                 <Graph/>
