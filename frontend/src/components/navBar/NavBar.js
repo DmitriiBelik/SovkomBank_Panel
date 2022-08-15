@@ -14,7 +14,7 @@ const NavBar = ({children}) => {
         <div ref={toggleRef} className="sidebar">
             <div className="logo_content">
                 <div className="logo">
-                    <img src={logo}/>
+                    <img src={logo} alt ="logo"/>
                 </div>
                 <i onClick={closeSwitch} className="bx bx-menu" id="btn" ></i>
             </div>
