@@ -4,24 +4,24 @@ import { Grid, Container } from "@mui/material"
 
 const GraphList = () => {
     const categories = [
-        'Каско',
-        'Осаго'
+        'Casco',
+        'Osago'
     ]
     return(
         <Container maxWidth="xl">  
             <Selector categories= {categories}/>
             <Grid container spacing={2}>
                 <Grid item xs={6} md={6}>
-                    <Graph graphLine ='casco' graphNumber ='1'/>
+                    <Graph graphNumber ='1'/>
                 </Grid>
                 <Grid item xs={6} md={6}>
-                    <Graph  graphLine ='casco' graphNumber ='2'/>
+                    <Graph graphNumber ='2'/>
                 </Grid>
                 <Grid item xs={6} md={6}>
-                <Graph  graphLine ='casco' graphNumber ='3'/>
+                <Graph graphNumber ='3'/>
                 </Grid>
                 <Grid item xs={6} md={6}>
-                <Graph  graphLine ='casco' graphNumber ='4'/>
+                <Graph graphNumber ='4'/>
                 </Grid>
             </Grid>
         </Container>

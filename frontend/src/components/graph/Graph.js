@@ -2,9 +2,10 @@ import Plot from 'react-plotly.js'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Skeleton from '@mui/material/Skeleton'
+import {  useSelector } from 'react-redux';
 
-const Graph = ({graphLine,graphNumber}) => {
-
+const Graph = ({graphNumber}) => {
+    const {activeCategorie} = useSelector(state=> state.graphs)
     const [items, setItems] = useState({});
     const [isLoaded, setLoaded] = useState(false);
     const [error, setError] = useState(false);
@@ -15,7 +16,7 @@ const Graph = ({graphLine,graphNumber}) => {
           declined = [],
           opened = [];  
     const fetch = () => {
-        axios.get(`http://localhost:3000/${graphLine}/`)
+        axios.get(`http://localhost:3000/${activeCategorie}/`)
             .then(res => {
                 setItems(res.data[graphNumber]);
                 setLoaded(true);
@@ -56,7 +57,7 @@ const Graph = ({graphLine,graphNumber}) => {
 
     useEffect(() => {
         fetch();
-    },[isLoaded])
+    },[isLoaded, fetch])
 
     if(error){
         return (
@@ -125,7 +126,7 @@ const Graph = ({graphLine,graphNumber}) => {
                     }
                 }
                 ]}
-                layout={ {width: "40%", height: 400, title: `${graphLine}: ${graphNumber}`,barmode: 'stack', font:{family:"'Rubik', sans-serif;"}} }
+                layout={ {width: "40%", height: 400, title: `${activeCategorie}: ${graphNumber}`,barmode: 'stack', font:{family:"'Rubik', sans-serif;"}} }
             />
         )
     }

@@ -2,16 +2,20 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { activeCategorieChanged } from '../../silces/graphSlice';
 
 const Selector = ({categories}) => {
-    const [categorie, setCategorie] = useState('');
+    const dispatch = useDispatch();
+    const {activeCategorie} = useSelector(state=> state.graphs)
     const handleChange = (event) => {
-        setCategorie(event.target.value);
+        dispatch(activeCategorieChanged(event.target.value));
     };
 
     useEffect (() => {
-        setCategorie(categories[0])
+        dispatch(activeCategorieChanged(activeCategorie))
+        console.log(activeCategorie)
     },[])
 
     return(
@@ -20,7 +24,7 @@ const Selector = ({categories}) => {
         <Select
             labelId="demo-select-small"
             id="demo-select-small"
-            value={categorie}
+            value={activeCategorie}
             label="categories"
             onChange={handleChange}
         >
